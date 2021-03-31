@@ -18,6 +18,14 @@ import com.example.uberbook.activities.Home;
 import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
+import com.example.uberbook.utils.Navigation;
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        Callback<Book> addBookCallback = new Callback<Book>() {
+        Navigation.init(this);
+
+        /*Callback<Book> addBookCallback = new Callback<Book>() {
             @Override
             public void onResponse(Call<Book> call, Response<Book> response) {
                 assert response.body() != null;
@@ -72,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        api.login("test", "test123", loginCallback);
+        api.login("test", "test123", loginCallback);*/
 
         ((TextView) findViewById(R.id.linkCreateAccount))
                 .setOnClickListener(new View.OnClickListener() {
@@ -100,6 +110,5 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-
     }
 }
