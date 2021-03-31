@@ -35,37 +35,36 @@
         app:layout_constraintVertical_bias="0.814" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/connectPassword"
         android:layout_width="250dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Email"
-        android:inputType="textPersonName"
+        android:hint="Mot de passe"
+        android:inputType="textPassword"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintVertical_bias="0.53" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/connectEmail"
         android:layout_width="250dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Mot de passe"
-        android:inputType="textPersonName"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.596"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintVertical_bias="0.425" />
 
     <TextView
         android:id="@+id/textView2"
