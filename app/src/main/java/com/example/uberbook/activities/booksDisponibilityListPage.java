@@ -106,7 +106,6 @@ public class booksDisponibilityListPage extends AppCompatActivity {
     void displayBooksByFilter()
     {
         //Log.d("texte",textFilter);
-        Log.d("tabBooks",bookList.toString());
         LinearLayout bookContainerLayout = ((LinearLayout) findViewById(R.id.linearLayout_BooksContainer));
         bookContainerLayout.removeAllViews();
 
