@@ -7,7 +7,7 @@
     tools:context=".activities.BorrowBook">
 
     <Button
-        android:id="@+id/buttonLogin2"
+        android:id="@+id/buttonBorrowNo"
         android:layout_width="166dp"
         android:layout_height="69dp"
         android:text="NON"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.743" />
 
     <Button
-        android:id="@+id/buttonLogin3"
+        android:id="@+id/buttonBorrowYes"
         android:layout_width="166dp"
         android:layout_height="69dp"
         android:text="OUI"
@@ -56,7 +56,7 @@
         app:srcCompat="@drawable/ic_fondtitre" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/borrowTitleView"
         android:layout_width="295dp"
         android:layout_height="106dp"
         android:gravity="center"
@@ -102,7 +102,7 @@
         app:layout_constraintVertical_bias="0.322" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/borrowAuthorView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nom et prénom de l'auteur"
@@ -117,7 +117,7 @@
         app:layout_constraintVertical_bias="0.322" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/borrowIsbnView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Code ISBN"
