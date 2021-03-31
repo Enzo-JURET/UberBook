@@ -26,6 +26,7 @@ import com.example.uberbook.R;
 import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
+import com.example.uberbook.utils.Navigation;
 
 import java.util.List;
 
@@ -53,12 +54,13 @@ public class booksDisponibilityListPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_disponibility_list_page);
 
+        Navigation.init(findViewById(R.id.bmb), this);
+        getBookList();
+
         // Gestion du changement d'affichage du filtre switch titre/auteur
         Switch filterSwitch = ((Switch) findViewById(R.id.switch_titleAuthor));
         filterSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
                 if(isChecked)
                 {
                     buttonView.setText("Auteur");
@@ -96,23 +98,21 @@ public class booksDisponibilityListPage extends AppCompatActivity {
            @Override
            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
                 dispoFilter = isChecked;
+                displayBooksByFilter();
            }
-       }
-        );
-
-        getBookList();
-
+        });
     }
 
     void displayBooksByFilter()
     {
-        Log.d("texte",textFilter);
+        //Log.d("texte",textFilter);
+        Log.d("tabBooks",bookList.toString());
         LinearLayout bookContainerLayout = ((LinearLayout) findViewById(R.id.linearLayout_BooksContainer));
         bookContainerLayout.removeAllViews();
 
         for(Book book : bookList)
         {
-            if((filterType == "title" || filterType == "author") && (book.getAuthor().contains(textFilter) || book.getTitle().contains(textFilter)) && (dispoFilter == false))
+            if((filterType == "title" || filterType == "author") && (book.getAuthor().contains(textFilter) || book.getTitle().contains(textFilter)) && (dispoFilter == false || (dispoFilter == true && book.getBorrower() != null)))
             {
                 LinearLayout layout  = new LinearLayout(context);
                 layout.setOrientation(LinearLayout.HORIZONTAL);
@@ -156,6 +156,7 @@ public class booksDisponibilityListPage extends AppCompatActivity {
             public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
                 assert response.body() != null;
                 bookList = response.body();
+                Log.d("DebugB",bookList.get(0).getTitle());
                 displayBooksByFilter();
             }
 
