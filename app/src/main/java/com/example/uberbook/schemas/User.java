@@ -15,4 +15,5 @@ public class User {
     public String getFormattedJwt() {
         return "Bearer " + jwt;
     }
+
 }
