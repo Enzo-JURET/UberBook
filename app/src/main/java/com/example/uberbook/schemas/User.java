@@ -14,10 +14,6 @@ public class User implements Serializable {
     @SerializedName("user")
     UserData user;
 
-    @Expose
-    @SerializedName("role")
-    Role role;
-
     public String getFormattedJwt() {
         return "Bearer " + jwt;
     }
@@ -36,13 +32,5 @@ public class User implements Serializable {
 
     public void setUser(UserData user) {
         this.user = user;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 }
