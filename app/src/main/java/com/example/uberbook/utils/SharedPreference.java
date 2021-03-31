@@ -2,12 +2,10 @@ package com.example.uberbook.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.example.uberbook.schemas.Role;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.schemas.UserData;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 public class SharedPreference {
@@ -37,6 +35,11 @@ public class SharedPreference {
          editor.putString("email", user.getUser().getEmail());
          editor.putInt("id", user.getUser().getId());
 
+         editor.putInt("role_id", user.getUser().getRole().getId());
+         editor.putString("role_name", user.getUser().getRole().getName());
+         editor.putString("role_description", user.getUser().getRole().getDescription());
+         editor.putString("role_type", user.getUser().getRole().getType());
+
 //      Push the modification
         editor.apply();
 
@@ -50,10 +53,18 @@ public class SharedPreference {
 //        Build string with json format
         User user = new User();
         UserData userData = new UserData();
+        Role role = new Role();
 
         userData.setEmail(settings.getString("email", null));
         userData.setId(settings.getInt("id", -1));
         userData.setUsername(settings.getString("email", null));
+
+        role.setId(settings.getInt("role_id", -1));
+        role.setName(settings.getString("role_name", null));
+        role.setDescription(settings.getString("role_description", null));
+        role.setType(settings.getString("role_type", null));
+
+        userData.setRole(role);
 
         user.setJwt(settings.getString("jwt", null));
         user.setUser(userData);

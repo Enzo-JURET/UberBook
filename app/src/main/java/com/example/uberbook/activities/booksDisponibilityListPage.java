@@ -161,7 +161,6 @@ public class booksDisponibilityListPage extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Book>> call, Throwable t) {
-
             }
         };
 
