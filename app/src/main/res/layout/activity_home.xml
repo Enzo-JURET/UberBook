@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="279dp"
-        android:layout_height="70dp"
+        android:layout_width="272dp"
+        android:layout_height="67dp"
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
         android:text="Entrer le numéro ISBN du livre  que vous souhaitez emprunter"
@@ -17,10 +17,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.257" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -31,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615"
+        app:layout_constraintVertical_bias="0.612"
         app:srcCompat="@drawable/image_livre" />
 
     <EditText
@@ -43,10 +43,10 @@
         android:textColor="#34323C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.351" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -54,10 +54,10 @@
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintHorizontal_bias="0.188"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383"
+        app:layout_constraintVertical_bias="0.356"
         app:srcCompat="@drawable/ic_icone_recherche" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
