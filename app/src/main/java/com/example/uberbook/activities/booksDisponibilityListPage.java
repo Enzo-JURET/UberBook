@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -24,6 +26,7 @@ import com.example.uberbook.R;
 import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
+import com.example.uberbook.utils.Navigation;
 
 import java.util.List;
 
@@ -39,9 +42,10 @@ public class booksDisponibilityListPage extends AppCompatActivity {
     // Liste des livres. Contient toute les données relative à chaque livre
     List<Book> bookList;
 
-    // Filtre switch / Filtre texte
+    // Filtre switch / Filtre texte / Filtre dispo
     String filterType = "title";
     String textFilter = "";
+    boolean dispoFilter = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +54,13 @@ public class booksDisponibilityListPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books_disponibility_list_page);
 
+        Navigation.init(findViewById(R.id.bmb), this);
+        getBookList();
+
         // Gestion du changement d'affichage du filtre switch titre/auteur
         Switch filterSwitch = ((Switch) findViewById(R.id.switch_titleAuthor));
         filterSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
                 if(isChecked)
                 {
                     buttonView.setText("Auteur");
@@ -71,9 +76,9 @@ public class booksDisponibilityListPage extends AppCompatActivity {
         });
 
         // Gestion du filtre textuel
-        EditText yourEditText = (EditText) findViewById(R.id.editText_BookSearchBar);
+        EditText textField = (EditText) findViewById(R.id.editText_BookSearchBar);
 
-        yourEditText.addTextChangedListener(new TextWatcher() {
+        textField.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
                 textFilter = s.toString();
@@ -85,21 +90,28 @@ public class booksDisponibilityListPage extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
+        // Gestion du filtre dispo (checkbox)
+        CheckBox checkboxDispo = (CheckBox) findViewById(R.id.checkBox_uniqDisp);
 
+        checkboxDispo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-        getBookList();
-
+           @Override
+           public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                dispoFilter = isChecked;
+                displayBooksByFilter();
+           }
+        });
     }
 
     void displayBooksByFilter()
     {
-        Log.d("texte",textFilter);
+        //Log.d("texte",textFilter);
         LinearLayout bookContainerLayout = ((LinearLayout) findViewById(R.id.linearLayout_BooksContainer));
         bookContainerLayout.removeAllViews();
 
         for(Book book : bookList)
         {
-            if((filterType == "title" || filterType == "author") && (book.getAuthor().contains(textFilter) || book.getTitle().contains(textFilter)))
+            if((filterType == "title" || filterType == "author") && (book.getAuthor().contains(textFilter) || book.getTitle().contains(textFilter)) && (dispoFilter == false || (dispoFilter == true && book.getBorrower() != null)))
             {
                 LinearLayout layout  = new LinearLayout(context);
                 layout.setOrientation(LinearLayout.HORIZONTAL);
@@ -143,6 +155,7 @@ public class booksDisponibilityListPage extends AppCompatActivity {
             public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
                 assert response.body() != null;
                 bookList = response.body();
+                Log.d("DebugB",bookList.get(0).getTitle());
                 displayBooksByFilter();
             }
 
