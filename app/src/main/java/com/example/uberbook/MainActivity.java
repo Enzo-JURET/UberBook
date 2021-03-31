@@ -5,17 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
+import com.example.uberbook.utils.Navigation;
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 import java.util.List;
 
-import github.com.st235.lib_expandablebottombar.ExpandableBottomBar;
-import github.com.st235.lib_expandablebottombar.ExpandableBottomBarMenuItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,15 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        ExpandableBottomBar bottomBar = findViewById(R.id.expandable_bottom_bar);
+        Navigation.init(this);
 
-        ExpandableBottomBarMenuItem.Builder itemsBuilder = new ExpandableBottomBarMenuItem.Builder(context);
-
-        itemsBuilder.addItem;
-
-        bottomBar.addItems("Test");
-
-        Callback<Book> addBookCallback = new Callback<Book>() {
+        /*Callback<Book> addBookCallback = new Callback<Book>() {
             @Override
             public void onResponse(Call<Book> call, Response<Book> response) {
                 assert response.body() != null;
@@ -78,6 +77,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        api.login("test", "test123", loginCallback);
+        api.login("test", "test123", loginCallback);*/
     }
 }

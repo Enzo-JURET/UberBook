@@ -7,17 +7,15 @@
     tools:context=".MainActivity"
     android:background="@drawable/bglibrary">
 
-    <github.com.st235.lib_expandablebottombar.ExpandableBottomBar
-        android:id="@+id/expandable_bottom_bar"
-        android:layout_width="0dp"
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/bmb"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:exb_backgroundCornerRadius="25dp"
-        app:exb_backgroundColor="#2e2e2e"
-        app:exb_itemInactiveColor="#fff"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        />
 
     <TextView
         android:id="@+id/textView"
