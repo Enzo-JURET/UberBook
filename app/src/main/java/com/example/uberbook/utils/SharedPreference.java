@@ -8,29 +8,28 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import okio.GzipSource;
 
 public class SharedPreference {
 
     static private SharedPreferences settings;
     static private SharedPreferences.Editor editor;
 
-    public SharedPreference(Context context){
+    static {
 //       Object creation to get stored data of shared preference
-        settings = context.getSharedPreferences("user", 0);
+        settings = App.getAppContext().getSharedPreferences("user", 0);
 //       Create the Editor object to modify the shared preference
         editor = settings.edit();
     };
 
-    public SharedPreference(Context context, User user) throws JSONException {
+    public static void buildSharedPreference(User user) throws JSONException {
 
 //       Object creation to get stored data of shared preference
-        settings = context.getSharedPreferences("user", 0);
+        settings = App.getAppContext().getSharedPreferences("user", 0);
 //       Create the Editor object to modify the shared preference
          editor = settings.edit();
 
 //       Delete all existing shared preference  key/data
-         this.removeAll();
+         removeAll();
 
          Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //       Convert to String with json format
@@ -48,7 +47,7 @@ public class SharedPreference {
 
     }
 
-    static boolean isLogged(){
+    public static boolean isLogged(){
 
         if(settings.contains("jwt")){
             return true;
@@ -57,7 +56,7 @@ public class SharedPreference {
         }
     }
 
-    static User getUserData() throws JSONException {
+    public static User getUserData() throws JSONException {
 //        Build string with json format
         String userString = new JSONObject()
                 .put("jwt", settings.getString("jwt", ""))
@@ -70,13 +69,13 @@ public class SharedPreference {
         return(gson.fromJson(userString, User.class));
     }
 
-    static int getUserId(){  return(settings.getInt("id", 0)); }
-    static String getUserName(){  return(settings.getString("username", "")); }
-    static String getUserEmail(){  return(settings.getString("email", "")); }
-    static String getJwt(){  return(settings.getString("jwt", "")); }
+    public static int getUserId(){  return(settings.getInt("id", 0)); }
+    public static String getUserName(){  return(settings.getString("username", "")); }
+    public static String getUserEmail(){  return(settings.getString("email", "")); }
+    public static String getJwt(){  return(settings.getString("jwt", "")); }
 
 
-    static void setUserId(int id){
+    public static void setUserId(int id){
         if(settings.contains("id")){
             editor.remove("id");
         }
@@ -85,7 +84,7 @@ public class SharedPreference {
         editor.apply();
     }
 
-    static void setUserName(String user){
+    public static void setUserName(String user){
         if(settings.contains("username")){
             editor.remove("username");
         }
@@ -94,7 +93,7 @@ public class SharedPreference {
         editor.apply();
     }
 
-    static void setJwt(String jwt){
+    public static void setJwt(String jwt){
 
         if(settings.contains("jwt")){
             editor.remove("jwt");
@@ -103,7 +102,7 @@ public class SharedPreference {
         editor.apply();
     }
 
-    static void setUserEmail(String email){
+    public static void setUserEmail(String email){
 
         if(settings.contains("email")){
             editor.remove("email");
@@ -113,7 +112,7 @@ public class SharedPreference {
         editor.apply();
     }
 
-    static void removeAll(){
+    public static void removeAll(){
 
         editor.remove("jwt");
         editor.remove("id");
