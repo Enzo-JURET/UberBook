@@ -18,6 +18,23 @@
         app:srcCompat="@drawable/ic_vague2" />
 
     <EditText
+        android:id="@+id/addBookIsbn"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Code ISBN"
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.244" />
+
+    <EditText
         android:id="@+id/addBookTitle"
         android:layout_width="280dp"
         android:layout_height="46dp"
@@ -52,24 +69,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.151" />
-
-    <EditText
-        android:id="@+id/addBookIsbn"
-        android:layout_width="280dp"
-        android:layout_height="46dp"
-        android:ems="10"
-        android:fontFamily="sans-serif"
-        android:hint="Code ISBN"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
 
     <EditText
         android:id="@+id/addBookDescription"

@@ -21,5 +21,13 @@ public class AddBook extends AppCompatActivity {
         setContentView(R.layout.activity_add_book);
 
         Navigation.init(findViewById(R.id.bmb), this);
+
+        ((ImageView) findViewById(R.id.buttonCancel))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
     }
 }
