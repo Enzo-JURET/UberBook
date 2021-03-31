@@ -49,6 +49,7 @@
         android:layout_width="283dp"
         android:layout_height="63dp"
         android:text="Se connecter"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#7E74EF"
         app:cornerRadius="100px"
         app:layout_constraintBottom_toBottomOf="parent"
