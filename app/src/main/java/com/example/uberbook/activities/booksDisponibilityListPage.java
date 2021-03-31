@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -39,9 +41,10 @@ public class booksDisponibilityListPage extends AppCompatActivity {
     // Liste des livres. Contient toute les données relative à chaque livre
     List<Book> bookList;
 
-    // Filtre switch / Filtre texte
+    // Filtre switch / Filtre texte / Filtre dispo
     String filterType = "title";
     String textFilter = "";
+    boolean dispoFilter = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +74,9 @@ public class booksDisponibilityListPage extends AppCompatActivity {
         });
 
         // Gestion du filtre textuel
-        EditText yourEditText = (EditText) findViewById(R.id.editText_BookSearchBar);
+        EditText textField = (EditText) findViewById(R.id.editText_BookSearchBar);
 
-        yourEditText.addTextChangedListener(new TextWatcher() {
+        textField.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
                 textFilter = s.toString();
@@ -85,7 +88,17 @@ public class booksDisponibilityListPage extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
+        // Gestion du filtre dispo (checkbox)
+        CheckBox checkboxDispo = (CheckBox) findViewById(R.id.checkBox_uniqDisp);
 
+        checkboxDispo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+           @Override
+           public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                dispoFilter = isChecked;
+           }
+       }
+        );
 
         getBookList();
 
@@ -99,7 +112,7 @@ public class booksDisponibilityListPage extends AppCompatActivity {
 
         for(Book book : bookList)
         {
-            if((filterType == "title" || filterType == "author") && (book.getAuthor().contains(textFilter) || book.getTitle().contains(textFilter)))
+            if((filterType == "title" || filterType == "author") && (book.getAuthor().contains(textFilter) || book.getTitle().contains(textFilter)) && (dispoFilter == false))
             {
                 LinearLayout layout  = new LinearLayout(context);
                 layout.setOrientation(LinearLayout.HORIZONTAL);
