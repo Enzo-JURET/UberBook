@@ -21,10 +21,10 @@ public class SharedPreference {
         editor = settings.edit();
     };
 
-    public static void buildSharedPreference(Context context, User user) throws JSONException {
+    public static void buildSharedPreference(User user) throws JSONException {
 
 //       Object creation to get stored data of shared preference
-        settings = context.getSharedPreferences("user", 0);
+        settings = App.getAppContext().getSharedPreferences("user", 0);
 //       Create the Editor object to modify the shared preference
          editor = settings.edit();
 
