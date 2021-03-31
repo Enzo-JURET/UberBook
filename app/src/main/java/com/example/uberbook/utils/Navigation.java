@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uberbook.MainActivity;
 import com.example.uberbook.R;
+import com.example.uberbook.activities.booksDisponibilityListPage;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
@@ -44,8 +45,9 @@ public class Navigation {
                 .listener(new OnBMClickListener() {
                     @Override
                     public void onBoomButtonClick(int index) {
-                        Log.d("Debug", "Clicked on button");
-                        //TODO: Action when calling
+                        Intent intent = new Intent(context, booksDisponibilityListPage.class);
+                        intent.putExtra("User", SharedPreference.getUser());
+                        context.startActivity(intent);
                     }
                 }));
 
