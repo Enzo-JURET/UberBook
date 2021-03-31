@@ -11,6 +11,10 @@ import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
 
+import java.util.List;
+
+import github.com.st235.lib_expandablebottombar.ExpandableBottomBar;
+import github.com.st235.lib_expandablebottombar.ExpandableBottomBarMenuItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        ExpandableBottomBar bottomBar = findViewById(R.id.expandable_bottom_bar);
+
+        ExpandableBottomBarMenuItem.Builder itemsBuilder = new ExpandableBottomBarMenuItem.Builder(context);
+
+        itemsBuilder.addItem;
+
+        bottomBar.addItems("Test");
 
         Callback<Book> addBookCallback = new Callback<Book>() {
             @Override
