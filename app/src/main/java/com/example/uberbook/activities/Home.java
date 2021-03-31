@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.uberbook.MainActivity;
 import com.example.uberbook.R;
+import com.example.uberbook.utils.Navigation;
 
 public class Home extends AppCompatActivity {
 
@@ -21,7 +22,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
-
+        Navigation.init(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
