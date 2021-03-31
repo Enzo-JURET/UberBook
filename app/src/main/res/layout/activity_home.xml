@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.Home">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="272dp"
-        android:layout_height="67dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center_horizontal"
-        android:text="Entrer le numéro ISBN du livre  que vous souhaitez emprunter"
-        android:textColor="#34323C"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.257" />
-
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
@@ -34,30 +18,45 @@
         app:layout_constraintVertical_bias="0.612"
         app:srcCompat="@drawable/image_livre" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="272dp"
+        android:layout_height="67dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Entrer le numéro ISBN du livre  que vous souhaitez emprunter"
         android:textColor="#34323C"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintVertical_bias="0.31" />
+
+    <EditText
+        android:id="@+id/searchIsbn"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/imageSearch"
         android:layout_width="24dp"
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.788"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356"
+        app:layout_constraintVertical_bias="0.386"
         app:srcCompat="@drawable/ic_icone_recherche" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
