@@ -1,8 +1,10 @@
-package com.example.uberbook;
+package com.example.uberbook.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.uberbook.R;
 
 public class CreateAccount extends AppCompatActivity {
 

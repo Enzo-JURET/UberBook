@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 newBook.setDescription("null");
                 newBook.setIsbn(6358);
                 api.addBooks(response.body(), newBook, addBookCallback);
-
                 Toast.makeText(context, "Ajout du livre ok", Toast.LENGTH_LONG).show();
             }
 
