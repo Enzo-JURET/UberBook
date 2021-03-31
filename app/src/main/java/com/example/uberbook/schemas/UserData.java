@@ -18,14 +18,6 @@ public class UserData implements Serializable {
     @SerializedName("email")
     String email;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -40,5 +32,13 @@ public class UserData implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
