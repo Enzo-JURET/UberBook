@@ -1,7 +1,14 @@
-package com.example.uberbook.schemas;
+package com.example.uberbook.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.example.uberbook.schemas.User;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okio.GzipSource;
 
 public class SharedPreference {
 
@@ -15,19 +22,26 @@ public class SharedPreference {
         editor = settings.edit();
     };
 
-    public SharedPreference(Context context, User user){
+    public SharedPreference(Context context, User user) throws JSONException {
 
 //       Object creation to get stored data of shared preference
         settings = context.getSharedPreferences("user", 0);
 //       Create the Editor object to modify the shared preference
          editor = settings.edit();
 
+//       Delete all existing shared preference  key/data
          this.removeAll();
 
-         editor.putString("jwt", user.jwt);
-         editor.putString("user", user.user.username);
-         editor.putString("email", user.user.email);
-         editor.putInt("id", user.user.id);
+         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//       Convert to String with json format
+         String resultJson = gson.toJson(user);
+//       Convert to JSON object
+        JSONObject jsonOb = new JSONObject(resultJson);
+
+         editor.putString("jwt", jsonOb.getString("jwt"));
+         editor.putString("username", jsonOb.getString("username"));
+         editor.putString("email", jsonOb.getString("email"));
+         editor.putInt("id", jsonOb.getInt("id"));
 
 //      Push the modification
         editor.apply();
@@ -36,23 +50,28 @@ public class SharedPreference {
 
     static boolean isLogged(){
 
-        if(settings.contains("user")){
+        if(settings.contains("jwt")){
             return true;
         }else{
             return false;
         }
     }
-    static void getUserData(User user){
-//      Fill user object from data stored locally
-        user.jwt = settings.getString("jwt", "");
-        user.user.id = settings.getInt("id", 0);
-        user.user.username = settings.getString("user", "");
-        user.user.email = settings.getString("email", "");
 
+    static User getUserData() throws JSONException {
+//        Build string with json format
+        String userString = new JSONObject()
+                .put("jwt", settings.getString("jwt", ""))
+                .put("id", settings.getInt("id", 0))
+                .put("username", settings.getString("username", ""))
+                .put("email", settings.getString("email", ""))
+                .toString();
+
+        Gson gson = new Gson();
+        return(gson.fromJson(userString, User.class));
     }
 
     static int getUserId(){  return(settings.getInt("id", 0)); }
-    static String getUserName(){  return(settings.getString("user", "")); }
+    static String getUserName(){  return(settings.getString("username", "")); }
     static String getUserEmail(){  return(settings.getString("email", "")); }
     static String getJwt(){  return(settings.getString("jwt", "")); }
 
@@ -67,11 +86,11 @@ public class SharedPreference {
     }
 
     static void setUserName(String user){
-        if(settings.contains("user")){
-            editor.remove("user");
+        if(settings.contains("username")){
+            editor.remove("username");
         }
 
-        editor.putString("user", user);
+        editor.putString("username", user);
         editor.apply();
     }
 
@@ -98,7 +117,7 @@ public class SharedPreference {
 
         editor.remove("jwt");
         editor.remove("id");
-        editor.remove("user");
+        editor.remove("username");
         editor.remove("email");
         editor.apply();
     }
