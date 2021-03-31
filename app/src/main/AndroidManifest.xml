@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UberBook"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.Home"></activity>
+        <activity android:name=".activities.ReturnBook"></activity>
+        <activity android:name=".activities.BorrowBook" />
+        <activity android:name=".activities.ForgottenPassword" />
+        <activity android:name=".activities.Home" />
         <activity android:name=".activities.CreateAccount" />
         <activity android:name=".activities.booksDisponibilityListPage" />
         <activity android:name=".MainActivity">

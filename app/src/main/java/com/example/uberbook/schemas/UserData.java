@@ -3,9 +3,7 @@ package com.example.uberbook.schemas;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class UserData implements Serializable {
+public class UserData {
     @Expose
     @SerializedName("id")
     Integer id;
