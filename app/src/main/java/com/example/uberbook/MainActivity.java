@@ -4,10 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.uberbook.activities.CreateAccount;
+import com.example.uberbook.activities.ForgottenPassword;
+import com.example.uberbook.activities.Home;
 import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
@@ -66,6 +73,33 @@ public class MainActivity extends AppCompatActivity {
         };
 
         api.login("test", "test123", loginCallback);
+
+        ((TextView) findViewById(R.id.linkCreateAccount))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, CreateAccount.class);
+                        startActivity(intent);
+                    }
+                });
+
+        ((TextView) findViewById(R.id.linkForgottenPasword))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, ForgottenPassword.class);
+                        startActivity(intent);
+                    }
+                });
+
+        ((Button) findViewById(R.id.buttonLogin))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, Home.class);
+                        startActivity(intent);
+                    }
+                });
 
     }
 }
