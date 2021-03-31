@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.uberbook.MainActivity;
 import com.example.uberbook.R;
+import com.example.uberbook.activities.AddBook;
 import com.example.uberbook.activities.booksDisponibilityListPage;
 import com.example.uberbook.schemas.User;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -87,8 +88,7 @@ public class Navigation {
                     .listener(new OnBMClickListener() {
                         @Override
                         public void onBoomButtonClick(int index) {
-                            SharedPreference.removeAll();
-                            Intent intent = new Intent(context, MainActivity.class);
+                            Intent intent = new Intent(context, AddBook.class);
                             context.startActivity(intent);
                         }
                     }));
@@ -98,9 +98,7 @@ public class Navigation {
                     .listener(new OnBMClickListener() {
                         @Override
                         public void onBoomButtonClick(int index) {
-                            SharedPreference.removeAll();
-                            Intent intent = new Intent(context, MainActivity.class);
-                            context.startActivity(intent);
+
                         }
                     }));
         }
