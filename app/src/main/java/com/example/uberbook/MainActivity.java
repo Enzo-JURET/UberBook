@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.uberbook.activities.booksDisponibilityListPage;
 import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
@@ -47,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 assert response.body() != null;
-
+                Intent intent = new Intent(context, booksDisponibilityListPage.class);
+                intent.putExtra("User",response.body());
+                startActivity(intent);
+                /*
                 Book newBook = new Book();
                 newBook.setTitle("La semaine de 4 heures");
                 newBook.setAuthor("Timoty FERRIS");
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 newBook.setIsbn(6358);
                 api.addBooks(response.body(), newBook, addBookCallback);
 
-                Toast.makeText(context, "Ajout du livre ok", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Ajout du livre ok", Toast.LENGTH_LONG).show();*/
             }
 
             @Override
