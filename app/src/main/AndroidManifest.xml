@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UberBook"
-        android:name=".utils.App"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.ReturnBook"></activity>
         <activity android:name=".activities.BorrowBook" />
