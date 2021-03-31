@@ -38,14 +38,5 @@ public class Home extends AppCompatActivity {
                         Toast.makeText(context, "Recherche du livre : "+searchIsbn, Toast.LENGTH_LONG).show();
                     }
                 });
-
-        ((TextView) findViewById(R.id.linkAddBook))
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Home.this, AddBook.class);
-                        startActivity(intent);
-                    }
-                });
     }
 }
