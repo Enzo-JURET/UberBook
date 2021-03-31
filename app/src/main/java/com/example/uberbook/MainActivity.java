@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
@@ -11,23 +12,29 @@ import android.widget.Toast;
 import com.example.uberbook.schemas.Book;
 import com.example.uberbook.schemas.User;
 import com.example.uberbook.utils.Api;
+import com.example.uberbook.utils.SharedPreference;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     Api api;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.SplashTheme);
         api = new Api();
         context = this;
 
         super.onCreate(savedInstanceState);
 
+//      if(SharedPreference.isLogged()){
+////          call home
+//      }else{
+////          call login view
+//      }
         setContentView(R.layout.activity_main);
 
         Callback<Book> addBookCallback = new Callback<Book>() {
