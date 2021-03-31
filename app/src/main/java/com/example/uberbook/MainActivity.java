@@ -1,43 +1,32 @@
 package com.example.uberbook;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Window;
-import android.widget.Toast;
-
-import com.example.uberbook.schemas.Book;
-import com.example.uberbook.schemas.User;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.example.uberbook.activities.CreateAccount;
+import com.example.uberbook.activities.ForgottenPassword;
+import com.example.uberbook.activities.Home;
 import com.example.uberbook.utils.Api;
-import com.example.uberbook.utils.SharedPreference;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
     Api api;
     Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.SplashTheme);
         api = new Api();
         context = this;
 
         super.onCreate(savedInstanceState);
 
-//      if(SharedPreference.isLogged()){
-////          call home
-//      }else{
-////          call login view
-//      }
         setContentView(R.layout.activity_main);
 
-        Callback<Book> addBookCallback = new Callback<Book>() {
+        /*Callback<Book> addBookCallback = new Callback<Book>() {
             @Override
             public void onResponse(Call<Book> call, Response<Book> response) {
                 assert response.body() != null;
@@ -72,7 +61,33 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        api.login("test", "test123", loginCallback);
+        api.login("test", "test123", loginCallback);*/
 
+        ((TextView) findViewById(R.id.linkCreateAccount))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, CreateAccount.class);
+                        startActivity(intent);
+                    }
+                });
+
+        ((TextView) findViewById(R.id.linkForgottenPasword))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, ForgottenPassword.class);
+                        startActivity(intent);
+                    }
+                });
+
+        ((Button) findViewById(R.id.buttonLogin))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(MainActivity.this, Home.class);
+                        startActivity(intent);
+                    }
+                });
     }
 }

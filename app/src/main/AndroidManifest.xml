@@ -11,21 +11,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.example.uberbook.utils.App"
         android:theme="@style/Theme.UberBook"
         android:usesCleartextTraffic="true">
-        android:theme="@style/splashScreenTheme" >
-        <activity android:name=".activities.Home"></activity>
+        <activity android:name=".activities.ReturnBook"></activity>
+        <activity android:name=".activities.BorrowBook" />
+        <activity android:name=".activities.ForgottenPassword" />
+        <activity android:name=".activities.Home" />
         <activity android:name=".activities.CreateAccount" />
         <activity android:name=".activities.booksDisponibilityListPage" />
-        <activity android:name=".MainActivity"
-                  android:theme="@style/SplashTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

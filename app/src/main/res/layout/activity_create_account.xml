@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.924" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/linkLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.924" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonCreateAccount"
         android:layout_width="283dp"
         android:layout_height="63dp"
         android:text="Créer mon compte"
@@ -144,7 +144,7 @@
         android:id="@+id/imageView2"
         android:layout_width="33dp"
         android:layout_height="27dp"
-        android:tint="@color/white"
+        app:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.158"
@@ -178,16 +178,16 @@
         app:srcCompat="@drawable/ic_icone_password" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/linkBack"
         android:layout_width="24dp"
         android:layout_height="37dp"
+        app:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.085"
-        app:srcCompat="@drawable/ic_icone_retour"
-        android:tint="@color/white"/>
+        app:srcCompat="@drawable/ic_icone_retour" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
