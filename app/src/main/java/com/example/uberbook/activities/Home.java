@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.uberbook.MainActivity;
@@ -35,6 +36,15 @@ public class Home extends AppCompatActivity {
                         EditText isbn = (EditText) findViewById(R.id.searchIsbn);
                         String searchIsbn = isbn.getText().toString();
                         Toast.makeText(context, "Recherche du livre : "+searchIsbn, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        ((TextView) findViewById(R.id.linkAddBook))
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Home.this, AddBook.class);
+                        startActivity(intent);
                     }
                 });
     }
