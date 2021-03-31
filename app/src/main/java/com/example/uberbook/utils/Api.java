@@ -44,4 +44,22 @@ public class Api {
         Call<Book> call = apiService.addBook(user.getFormattedJwt(), book);
         call.enqueue(callback);
     }
+
+    public void getBook(User user, int id, Callback<Book> callback) {
+        ApiService apiService = retrofit.create(ApiService.class);
+        Call<Book> call = apiService.getBook(user.getFormattedJwt(), id);
+        call.enqueue(callback);
+    }
+
+    public void deleteBook(User user, int id, Callback<Book> callback) {
+        ApiService apiService = retrofit.create(ApiService.class);
+        Call<Book> call = apiService.deleteBook(user.getFormattedJwt(), id);
+        call.enqueue(callback);
+    }
+
+    public void updateBook(User user, Book book, Callback<Book> callback) {
+        ApiService apiService = retrofit.create(ApiService.class);
+        Call<Book> call = apiService.updateBook(user.getFormattedJwt(), book.getId(), book);
+        call.enqueue(callback);
+    }
 }
