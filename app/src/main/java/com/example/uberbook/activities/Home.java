@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.uberbook.MainActivity;
 import com.example.uberbook.R;
 import com.example.uberbook.utils.Navigation;
+import com.nightonke.boommenu.BoomMenuButton;
 
 public class Home extends AppCompatActivity {
 
@@ -22,9 +23,10 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
-        Navigation.init(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Navigation.init(findViewById(R.id.bmb));
 
         ((ImageView) findViewById(R.id.imageSearch))
                 .setOnClickListener(new View.OnClickListener() {

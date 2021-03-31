@@ -17,17 +17,15 @@ import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 public class Navigation {
-    public static void init(AppCompatActivity activity) {
-        BoomMenuButton bmb = (BoomMenuButton) activity.findViewById(R.id.bmb);
+    public static void init(BoomMenuButton currentBoomMenuButton) {
+        currentBoomMenuButton.setButtonEnum(ButtonEnum.SimpleCircle);
 
-        bmb.setButtonEnum(ButtonEnum.SimpleCircle);
+        currentBoomMenuButton.setPiecePlaceEnum(PiecePlaceEnum.DOT_3_1);
+        currentBoomMenuButton.setButtonPlaceEnum(ButtonPlaceEnum.SC_3_1);
 
-        bmb.setPiecePlaceEnum(PiecePlaceEnum.DOT_3_1);
-        bmb.setButtonPlaceEnum(ButtonPlaceEnum.SC_3_1);
+        currentBoomMenuButton.setDotRadius(14);
 
-        bmb.setDotRadius(14);
-
-        bmb.addBuilder(new SimpleCircleButton.Builder()
+        currentBoomMenuButton.addBuilder(new SimpleCircleButton.Builder()
                 .normalImageRes(R.drawable.ic_icone_scan)
                 .normalColor(Color.rgb(255, 255, 255))
                 .listener(new OnBMClickListener() {
@@ -38,7 +36,7 @@ public class Navigation {
                     }
                 }));
 
-        bmb.addBuilder(new SimpleCircleButton.Builder()
+        currentBoomMenuButton.addBuilder(new SimpleCircleButton.Builder()
                 .normalImageRes(R.drawable.ic_icone_home)
                 .normalColor(Color.rgb(255, 255, 255))
                 .listener(new OnBMClickListener() {
@@ -49,7 +47,7 @@ public class Navigation {
                     }
                 }));
 
-        bmb.addBuilder(new SimpleCircleButton.Builder()
+        currentBoomMenuButton.addBuilder(new SimpleCircleButton.Builder()
                 .normalImageRes(R.drawable.ic_icone_profil)
                 .normalColor(Color.rgb(255, 255, 255))
                 .listener(new OnBMClickListener() {
