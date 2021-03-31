@@ -18,6 +18,14 @@ public class User implements Serializable {
         return "Bearer " + jwt;
     }
 
+    public String getJwt() {
+        return jwt;
+    }
+
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
+    }
+
     public UserData getUser() {
         return user;
     }

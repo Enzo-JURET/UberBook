@@ -1,24 +1,16 @@
 package com.example.uberbook.utils;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.example.uberbook.MainActivity;
 import com.example.uberbook.R;
-import com.example.uberbook.activities.CreateAccount;
-import com.example.uberbook.activities.ReturnBook;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
@@ -27,7 +19,7 @@ import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 
 public class Navigation {
-    public static void init(BoomMenuButton currentBoomMenuButton) {
+    public static void init(BoomMenuButton currentBoomMenuButton, AppCompatActivity context) {
         currentBoomMenuButton.setButtonEnum(ButtonEnum.SimpleCircle);
 
         currentBoomMenuButton.setPiecePlaceEnum(PiecePlaceEnum.DOT_3_1);
@@ -41,13 +33,6 @@ public class Navigation {
                 .listener(new OnBMClickListener() {
                     @Override
                     public void onBoomButtonClick(int index) {
-
-                        Activity activity = (Activity) App.getAppContext();
-                        Intent intent = new Intent(activity, ReturnBook.class);
-                        activity.startActivity(intent);
-
-//                        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
-//                        new IntentIntegrator(activity).initiateScan();
                         Log.d("Debug", "Clicked on button");
                         //TODO: Action when calling
                     }
@@ -70,24 +55,10 @@ public class Navigation {
                 .listener(new OnBMClickListener() {
                     @Override
                     public void onBoomButtonClick(int index) {
-                        Log.d("Debug", "Clicked on button");
-                        //TODO: Action when calling
+                            SharedPreference.removeAll();
+                            Intent intent = new Intent(context, MainActivity.class);
+                            context.startActivity(intent);
                     }
                 }));
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        Get the scan result
-        Activity activity = (Activity) App.getAppContext();
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            if(result.getContents() == null) {
-                Toast.makeText(activity, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(activity, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-            }
-        } else {
-//            super.onActivityResult(requestCode, resultCode, data);
-        }
     }
 }
