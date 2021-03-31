@@ -3,6 +3,7 @@ package com.example.uberbook.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.example.uberbook.schemas.User;
+import com.example.uberbook.schemas.UserData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.json.JSONException;
@@ -21,26 +22,20 @@ public class SharedPreference {
         editor = settings.edit();
     };
 
-    public static void buildSharedPreference(User user) throws JSONException {
+    public static void buildSharedPreference(User user) {
 
 //       Object creation to get stored data of shared preference
-        settings = App.getAppContext().getSharedPreferences("user", 0);
+         settings = App.getAppContext().getSharedPreferences("user", 0);
 //       Create the Editor object to modify the shared preference
          editor = settings.edit();
 
 //       Delete all existing shared preference  key/data
          removeAll();
 
-         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//       Convert to String with json format
-         String resultJson = gson.toJson(user);
-//       Convert to JSON object
-        JSONObject jsonOb = new JSONObject(resultJson);
-
-         editor.putString("jwt", jsonOb.getString("jwt"));
-         editor.putString("username", jsonOb.getString("username"));
-         editor.putString("email", jsonOb.getString("email"));
-         editor.putInt("id", jsonOb.getInt("id"));
+         editor.putString("jwt", user.getJwt());
+         editor.putString("username", user.getUser().getUsername());
+         editor.putString("email", user.getUser().getEmail());
+         editor.putInt("id", user.getUser().getId());
 
 //      Push the modification
         editor.apply();
@@ -48,25 +43,22 @@ public class SharedPreference {
     }
 
     public static boolean isLogged(){
-
-        if(settings.contains("jwt")){
-            return true;
-        }else{
-            return false;
-        }
+        return settings.contains("jwt");
     }
 
-    public static User getUserData() throws JSONException {
+    public static User getUser() {
 //        Build string with json format
-        String userString = new JSONObject()
-                .put("jwt", settings.getString("jwt", ""))
-                .put("id", settings.getInt("id", 0))
-                .put("username", settings.getString("username", ""))
-                .put("email", settings.getString("email", ""))
-                .toString();
+        User user = new User();
+        UserData userData = new UserData();
 
-        Gson gson = new Gson();
-        return(gson.fromJson(userString, User.class));
+        userData.setEmail(settings.getString("email", null));
+        userData.setId(settings.getInt("id", -1));
+        userData.setUsername(settings.getString("email", null));
+
+        user.setJwt(settings.getString("jwt", null));
+        user.setUser(userData);
+
+        return user;
     }
 
     public static int getUserId(){  return(settings.getInt("id", 0)); }

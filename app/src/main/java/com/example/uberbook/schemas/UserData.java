@@ -3,7 +3,9 @@ package com.example.uberbook.schemas;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserData {
+import java.io.Serializable;
+
+public class UserData implements Serializable {
     @Expose
     @SerializedName("id")
     Integer id;
@@ -15,14 +17,6 @@ public class UserData {
     @Expose
     @SerializedName("email")
     String email;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -38,5 +32,13 @@ public class UserData {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
