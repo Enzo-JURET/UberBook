@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 assert response.body() != null;
                 Intent intent = new Intent(context, booksDisponibilityListPage.class);
                 intent.putExtra("User",response.body());
+                Log.d("Debug","Passage PutExtra");
                 startActivity(intent);
                 /*
                 Book newBook = new Book();

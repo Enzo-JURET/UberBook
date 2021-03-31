@@ -17,4 +17,12 @@ public class User implements Serializable {
     public String getFormattedJwt() {
         return "Bearer " + jwt;
     }
+
+    public UserData getUser() {
+        return user;
+    }
+
+    public void setUser(UserData user) {
+        this.user = user;
+    }
 }
