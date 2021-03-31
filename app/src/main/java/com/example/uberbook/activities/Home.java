@@ -26,7 +26,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Navigation.init(findViewById(R.id.bmb));
+        Navigation.init(findViewById(R.id.bmb), this);
 
         ((ImageView) findViewById(R.id.imageSearch))
                 .setOnClickListener(new View.OnClickListener() {
