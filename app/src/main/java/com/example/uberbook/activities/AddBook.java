@@ -14,6 +14,6 @@ public class AddBook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        Navigation.init(findViewById(R.id.bmb));
+        Navigation.init(findViewById(R.id.bmb), this);
     }
 }
